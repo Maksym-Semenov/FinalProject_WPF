@@ -7,6 +7,7 @@ using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Data.Entity.Core.Objects;
+using System.Windows.Controls;
 
 namespace FinalProject_WPF
 {
@@ -17,9 +18,6 @@ namespace FinalProject_WPF
     {
         ProductDBEntities productDB = new ProductDBEntities(); 
         private SqlConnection sqlConnection = null;
-        //private SqlCommandBuilder sqlBuilder = null;
-        //private SqlDataAdapter sqlDataAdapter = null;
-        //private DataSet dataSet = null;
         public MainWindow()
         {
             InitializeComponent();
@@ -28,17 +26,12 @@ namespace FinalProject_WPF
         {
             var query =
             from product in productDB.MeatProduct
-            where product.Id >= 0
-            orderby product.Id
-            select new { product.name, product.product_type,  product.price, product.description, product.quantity, product.type_of_meat, product.fat_content};
-
+            //where product.Id >= 0
+            //orderby product.Id
+            select new { product.Id, product.name, product.product_type, product.price, product.description, product.quantity, product.type_of_meat, product.fat_content };
             dataGrid1.ItemsSource = query.ToList();
-
-
-
-
-            //sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["ProductDB"].ConnectionString);
-            //sqlConnection.Open();
+            sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["ProductDB"].ConnectionString);
+            sqlConnection.Open();
         }
 
         private void Button_1_Click(object sender, RoutedEventArgs e)
@@ -63,13 +56,14 @@ namespace FinalProject_WPF
             command2.Parameters.AddWithValue("fat_content", TextBox_11.Text);
             command2.Parameters.AddWithValue("product_type", TextBox_12.Text);
             MessageBox.Show(command2.ExecuteNonQuery().ToString());
-
         }
 
         private void Button_3_Click(object sender, RoutedEventArgs e)
         {
+            var query =
+            from product in productDB.MeatProduct
+            select new { product.Id, product.name, product.product_type, product.price, product.description, product.quantity, product.type_of_meat, product.fat_content };
+            dataGrid1.ItemsSource = query.ToList();
         }
-
-
     }
 }

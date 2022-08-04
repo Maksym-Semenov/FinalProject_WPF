@@ -40,16 +40,22 @@
                     <Label Content="Product Type" HorizontalAlignment="Left" Margin="395,254,0,0" VerticalAlignment="Top" Width="80" Height="25" Grid.Column="1"/>
                     <Label Content="Fat" HorizontalAlignment="Left" Margin="395,219,0,0" VerticalAlignment="Top" Width="80" Height="25" Grid.Column="1"/>
                     <Button x:Name="Button_2" Content="INSERT Dairy Product" HorizontalAlignment="Left" Margin="400,314,0,0" VerticalAlignment="Top" Width="250" Click="Button_2_Click" Grid.Column="1"/>
+                    
                 </Grid>
             </TabItem>
-            <TabItem Header="SELECT">
+            <TabItem Header="VIEW ALL">
                 <Grid x:Name="dataGrid_1" Background="#FFE5E5E5">
                     <StackPanel/>
-                    <Button x:Name="Button_3" Content="SELECT" HorizontalAlignment="Left" Height="40" Margin="47,289,0,0" VerticalAlignment="Top" Width="710" Click="Button_3_Click"/>
-                    <TextBox x:Name="TextBox_13" HorizontalAlignment="Left" Height="30" Margin="52,349,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="705"/>
-                    <DataGrid Name="dataGrid1">
+                    <DataGrid Name="dataGrid1" Margin="0,0,0,7">
 
                     </DataGrid>
+                </Grid>
+            </TabItem>
+            <TabItem HorizontalAlignment="Center" Height="20" Header="SELECT" VerticalAlignment="Center" Width="54">
+                <Grid Background="#FFE5E5E5">
+                    <DataGrid d:ItemsSource="{d:SampleData ItemCount=15}"/>
+                    <ComboBox HorizontalAlignment="Left" Height="25" Margin="22,324,0,0" VerticalAlignment="Top" Width="140"/>
+                    <TextBox HorizontalAlignment="Left" Height="25" Margin="187,324,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="150"/>
                 </Grid>
             </TabItem>
         </TabControl>
