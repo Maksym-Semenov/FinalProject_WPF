@@ -1,0 +1,1 @@
+﻿SELECT * FROM MeatProduct WHERE id >= 5;
